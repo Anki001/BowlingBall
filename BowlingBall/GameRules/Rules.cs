@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace BowlingBall.GameRules
 {
     public class Rules : IRules
-    {        
+    {
         //private int MaxFrameCount_M = 10;        
         //private int MaxRollCountLastFrame_M = 3;        
         //private int MaxRollCountPerFrame_M = 2;        
@@ -40,7 +40,7 @@ namespace BowlingBall.GameRules
             if (!FrameTypeHelper.IsLastFrame(currentFrame) && FrameTypeHelper.IsStrike(pins))
                 return Constants.MaxRollCountPerStrike;
 
-            if (FrameTypeHelper.IsStrike(pins) || FrameTypeHelper.IsSpare(pins))
+            if (FrameTypeHelper.IsLastFrame(currentFrame) && (FrameTypeHelper.IsStrike(pins) || FrameTypeHelper.IsSpare(pins)))
                 return Constants.MaxRollCountLastFrame;
 
             return Constants.MaxRollCountPerFrame;
