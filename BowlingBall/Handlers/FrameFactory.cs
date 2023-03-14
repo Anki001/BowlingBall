@@ -1,23 +1,13 @@
 ﻿using BowlingBall.Common.Types;
-using BowlingBall.GameRules.Interfaces;
 using BowlingBall.Handlers.Interfaces;
 using System.Collections.Generic;
 
 namespace BowlingBall.Handlers
 {
-    public class FrameFactory: IFrameFactory
+    public class FrameFactory : IFrameFactory
     {
-        private readonly IRules _rule;
-
-        public FrameFactory(IRules rule)
+        public IFrame CreateFrame(int frameIndex, IEnumerable<int> pins, FrameType frameType)
         {
-            _rule = rule;
-        }
-
-        public IFrame CreateFrame(int frameIndex, IEnumerable<int> pins)
-        {
-            var frameType = _rule.GetFrameType(pins);
-
             switch (frameType)
             {
                 case FrameType.Spare:

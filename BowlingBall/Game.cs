@@ -1,6 +1,5 @@
 ﻿using BowlingBall.GameRules.Interfaces;
 using BowlingBall.Handlers.Interfaces;
-using BowlingBall.Helpers;
 using BowlingBall.Helpers.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +34,9 @@ namespace BowlingBall
 
             if (_rollsForCurrentFarme == _rule.GetRollAllowedForCurrentFrame(_frameCouter, _pinsForCurrentFrame))
             {
-                var nextFrame = _frameFactory.CreateFrame(_frameCouter, _pinsForCurrentFrame);
+                var frameType = _rule.GetFrameType(_pinsForCurrentFrame);
+
+                var nextFrame = _frameFactory.CreateFrame(_frameCouter, _pinsForCurrentFrame, frameType);
 
                 _frameHelper.SetNextFrame(_frames, nextFrame);
                 _frames.Add(nextFrame);

@@ -24,7 +24,7 @@ namespace BowlingBall.Tests
 
             _rule = new Rules();
             _frameHelper = new FrameHelper();
-            _frameFactory = new FrameFactory(_rule);
+            _frameFactory = new FrameFactory();
             _game = new Game(_rule, _frameHelper, _frameFactory);
         }
 
@@ -74,6 +74,63 @@ namespace BowlingBall.Tests
             _game.Roll(1);
             _game.Roll(10);
 
+            var actualScore = _game.GetScore();
+
+            // Assert
+            Assert.AreEqual(expectedScore, actualScore);
+        }
+
+        [TestMethod]
+        public void Game_If_Strike_For_All_Frame_Then_Score_Should_Be_300()
+        {
+            // Arrangee
+            var expectedScore = 300;
+            Roll(_game, 10, 12);
+
+            // Act
+            var actualScore = _game.GetScore();
+
+            // Assert
+            Assert.AreEqual(expectedScore, actualScore);
+        }
+
+        [TestMethod]
+        public void Game_If_Spare_For_All_Frame_Then_Score_Should_Be_150()
+        {
+            // Arrangee
+            var expectedScore = 150;
+            Roll(_game, 5, 21);
+
+            // Act
+            var actualScore = _game.GetScore();
+
+            // Assert
+            Assert.AreEqual(expectedScore, actualScore);
+        }
+
+        [TestMethod]
+        public void Game_If_Alternate_Spare_And_Strike_Frame_Then_Score_Should_Be_200()
+        {
+            // Arrangee
+            var expectedScore = 200;
+
+            Roll(_game, 5, 2);
+            Roll(_game, 10, 1);
+
+            Roll(_game, 5, 2);
+            Roll(_game, 10, 1);
+
+            Roll(_game, 5, 2);
+            Roll(_game, 10, 1);
+
+            Roll(_game, 5, 2);
+            Roll(_game, 10, 1);
+
+            Roll(_game, 5, 2);
+            Roll(_game, 10, 1);
+            Roll(_game, 5, 2);
+
+            // Act
             var actualScore = _game.GetScore();
 
             // Assert
