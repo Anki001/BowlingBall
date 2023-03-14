@@ -42,12 +42,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Extensions\BonusScoreCalculator.cs" />
     <Compile Include="Common\Types\FrameType.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameRules\Interfaces\IRules.cs" />
+    <Compile Include="GameRules\Rules.cs" />
+    <Compile Include="Handlers\Frame.cs" />
+    <Compile Include="Handlers\FrameFactory.cs" />
+    <Compile Include="Handlers\Interfaces\IFrame.cs" />
+    <Compile Include="Handlers\Interfaces\IFrameFactory.cs" />
+    <Compile Include="Handlers\SpareFrame.cs" />
+    <Compile Include="Handlers\StrikeFrame.cs" />
+    <Compile Include="Helpers\FrameHelper.cs" />
     <Compile Include="Helpers\FrameTypeHelper.cs" />
+    <Compile Include="Helpers\Interfaces\IFrameHelper.cs" />
+    <Compile Include="IGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rules\Interfaces\IRules.cs" />
-    <Compile Include="Rules\Rules.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
