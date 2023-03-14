@@ -3,7 +3,6 @@ using BowlingBall.GameRules.Interfaces;
 using BowlingBall.Handlers;
 using BowlingBall.Handlers.Interfaces;
 using BowlingBall.Helpers;
-using BowlingBall.Helpers.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BowlingBall.Tests
@@ -11,8 +10,7 @@ namespace BowlingBall.Tests
     [TestClass]
     public class GameFixture
     {
-        private IRules _rule;
-        private IFrameHelper _frameHelper;
+        private IRules _rule;        
         private IFrameFactory _frameFactory;
 
         private IGame _game;
@@ -22,10 +20,9 @@ namespace BowlingBall.Tests
         {
             var rules = new Rules();
 
-            _rule = new Rules();
-            _frameHelper = new FrameHelper();
+            _rule = new Rules();            
             _frameFactory = new FrameFactory();
-            _game = new Game(_rule, _frameHelper, _frameFactory);
+            _game = new Game(_rule, _frameFactory);
         }
 
         [TestMethod]

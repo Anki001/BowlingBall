@@ -1,16 +1,28 @@
-﻿using BowlingBall.Handlers.Interfaces;
-using BowlingBall.Helpers.Interfaces;
-using System;
+﻿using BowlingBall.Common;
+using BowlingBall.Handlers.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BowlingBall.Helpers
 {
-    public class FrameHelper : IFrameHelper
+    public class FrameHelper
     {
-        public void SetNextFrame(IEnumerable<IFrame> frames, IFrame nextFrame)
+        public static bool IsLastFrame(int currentFrame)
+        {
+            return currentFrame == Constants.MaxFrameCount;
+        }
+
+        public static bool IsSpare(IEnumerable<int> pins)
+        {
+            return pins.Count() >= Constants.MaxRollCountPerFrame && pins.Take(Constants.MaxRollCountPerFrame).Sum() == Constants.TotalPinsPerRoll;
+        }
+
+        public static bool IsStrike(IEnumerable<int> pins)
+        {
+            return pins.Any() && pins.First() == Constants.TotalPinsPerRoll;
+        }
+
+        public static void SetNextFrame(IEnumerable<IFrame> frames, IFrame nextFrame)
         {
             if (!frames.Any() || frames.LastOrDefault() == null || nextFrame == null) return;
 

@@ -54,8 +54,6 @@
     <Compile Include="Handlers\SpareFrame.cs" />
     <Compile Include="Handlers\StrikeFrame.cs" />
     <Compile Include="Helpers\FrameHelper.cs" />
-    <Compile Include="Helpers\FrameTypeHelper.cs" />
-    <Compile Include="Helpers\Interfaces\IFrameHelper.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

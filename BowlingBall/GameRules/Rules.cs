@@ -1,7 +1,7 @@
 ﻿using BowlingBall.Common;
 using BowlingBall.Common.Types;
-using BowlingBall.Helpers;
 using BowlingBall.GameRules.Interfaces;
+using BowlingBall.Helpers;
 using System.Collections.Generic;
 
 namespace BowlingBall.GameRules
@@ -10,10 +10,10 @@ namespace BowlingBall.GameRules
     {
         public FrameType GetFrameType(IEnumerable<int> pins)
         {
-            if (FrameTypeHelper.IsStrike(pins))
+            if (FrameHelper.IsStrike(pins))
                 return FrameType.Strike;
 
-            if (FrameTypeHelper.IsSpare(pins))
+            if (FrameHelper.IsSpare(pins))
                 return FrameType.Spare;
 
             return FrameType.Open;
@@ -21,10 +21,10 @@ namespace BowlingBall.GameRules
 
         public int GetRollAllowedForCurrentFrame(int currentFrame, IEnumerable<int> pins)
         {
-            if (!FrameTypeHelper.IsLastFrame(currentFrame) && FrameTypeHelper.IsStrike(pins))
+            if (!FrameHelper.IsLastFrame(currentFrame) && FrameHelper.IsStrike(pins))
                 return Constants.MaxRollCountPerStrike;
 
-            if (FrameTypeHelper.IsLastFrame(currentFrame) && (FrameTypeHelper.IsStrike(pins) || FrameTypeHelper.IsSpare(pins)))
+            if (FrameHelper.IsLastFrame(currentFrame) && (FrameHelper.IsStrike(pins) || FrameHelper.IsSpare(pins)))
                 return Constants.MaxRollCountLastFrame;
 
             return Constants.MaxRollCountPerFrame;

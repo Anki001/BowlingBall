@@ -1,6 +1,6 @@
 ﻿using BowlingBall.GameRules.Interfaces;
 using BowlingBall.Handlers.Interfaces;
-using BowlingBall.Helpers.Interfaces;
+using BowlingBall.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,8 +8,7 @@ namespace BowlingBall
 {
     public class Game: IGame
     {
-        private readonly IRules _rule;
-        private readonly IFrameHelper _frameHelper;
+        private readonly IRules _rule;        
         private readonly IFrameFactory _frameFactory;
 
         private List<IFrame> _frames;
@@ -19,10 +18,9 @@ namespace BowlingBall
 
         public Game(){ }
 
-        public Game(IRules rule, IFrameHelper frameHelper, IFrameFactory frameFactory)
+        public Game(IRules rule, IFrameFactory frameFactory)
         {
-            _rule = rule;
-            _frameHelper = frameHelper;
+            _rule = rule;            
             _frameFactory = frameFactory;
             _frames = new List<IFrame>();
             _pinsForCurrentFrame = new List<int>();
@@ -38,7 +36,7 @@ namespace BowlingBall
 
                 var nextFrame = _frameFactory.CreateFrame(_frameCouter, _pinsForCurrentFrame, frameType);
 
-                _frameHelper.SetNextFrame(_frames, nextFrame);
+                FrameHelper.SetNextFrame(_frames, nextFrame);
                 _frames.Add(nextFrame);
 
                 InitializeNextFrame();
