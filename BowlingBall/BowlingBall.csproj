@@ -41,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Types\FrameType.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Helpers\FrameTypeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\Interfaces\IRules.cs" />
+    <Compile Include="Rules\Rules.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

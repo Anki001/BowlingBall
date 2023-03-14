@@ -5,3 +5,6 @@
 /.vs
 /BowlingBall/obj
 /BowlingBall.Tests/obj/Debug
+/BowlingBall.Tests/bin/Debug
+/BowlingBall/bin/Debug
+/packages
