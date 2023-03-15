@@ -30,7 +30,7 @@ namespace BowlingBall.Tests
         {
             // Arrange
             var expectedScore = 0;
-            Roll(_game, 0, 20);
+            Roll(0, 20);
 
             // Act
             var actualScore = _game.GetScore();
@@ -82,7 +82,7 @@ namespace BowlingBall.Tests
         {
             // Arrangee
             var expectedScore = 300;
-            Roll(_game, 10, 12);
+            Roll(10, 12);
 
             // Act
             var actualScore = _game.GetScore();
@@ -96,7 +96,7 @@ namespace BowlingBall.Tests
         {
             // Arrangee
             var expectedScore = 150;
-            Roll(_game, 5, 21);
+            Roll(5, 21);
 
             // Act
             var actualScore = _game.GetScore();
@@ -111,21 +111,21 @@ namespace BowlingBall.Tests
             // Arrangee
             var expectedScore = 200;
 
-            Roll(_game, 5, 2);
-            Roll(_game, 10, 1);
+            Roll(5, 2);
+            Roll(10, 1);
 
-            Roll(_game, 5, 2);
-            Roll(_game, 10, 1);
+            Roll(5, 2);
+            Roll(10, 1);
 
-            Roll(_game, 5, 2);
-            Roll(_game, 10, 1);
+            Roll(5, 2);
+            Roll(10, 1);
 
-            Roll(_game, 5, 2);
-            Roll(_game, 10, 1);
+            Roll(5, 2);
+            Roll(10, 1);
 
-            Roll(_game, 5, 2);
-            Roll(_game, 10, 1);
-            Roll(_game, 5, 2);
+            Roll(5, 2);
+            Roll(10, 1);
+            Roll(5, 2);
 
             // Act
             var actualScore = _game.GetScore();
@@ -134,11 +134,11 @@ namespace BowlingBall.Tests
             Assert.AreEqual(expectedScore, actualScore);
         }
 
-        private void Roll(IGame game, int pins, int times)
+        private void Roll(int pins, int times)
         {
             for (int i = 0; i < times; i++)
             {
-                game.Roll(pins);
+                _game.Roll(pins);
             }
         }
     }
